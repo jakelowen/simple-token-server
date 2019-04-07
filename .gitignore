@@ -1,0 +1,8 @@
+node_modules/
+trashbin/
+yarn-error.log
+logs.txt
+.DS_Store
+.env
+dist
+build
