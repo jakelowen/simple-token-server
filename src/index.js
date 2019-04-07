@@ -45,8 +45,7 @@ const server = new GraphQLServer({
   context: ({ request, response }) => ({
     req: request,
     res: response,
-    user: request.user,
-    redis
+    user: request.user
   })
 });
 
