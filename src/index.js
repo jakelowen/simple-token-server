@@ -38,12 +38,13 @@ const resolvers = {
       };
       if (ctx.user && ctx.user.id) {
         const quote = quotes[from];
+        console.log(">>>>>>>>>>>", quote);
         if (!quote) {
           return "from arg must be bill or ted";
         }
         return quote;
       }
-      return null;
+      return "You must be authed.";
     }
   },
   Mutation: {
