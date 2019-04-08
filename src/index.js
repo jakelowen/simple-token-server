@@ -12,6 +12,7 @@ const typeDefs = `
   
   type Query {
     me: User
+    quote(from: String!): String!
   }
 
   type Mutation {
@@ -26,6 +27,21 @@ const resolvers = {
         return {
           id: ctx.user.id
         };
+      }
+      return null;
+    },
+    quote: (_, { from }, ctx) => {
+      const quotes = {
+        ted: "Strange things are afoot at the Circle-K",
+        bill:
+          "Ted, you and I have witnessed many things, but nothing as bodacious as what just happened. Besides, we told ourselves to listen to this guy."
+      };
+      if (ctx.user && ctx.user.id) {
+        const quote = quotes[from];
+        if (!quote) {
+          return "from arg must be bill or ted";
+        }
+        return quote;
       }
       return null;
     }
